@@ -1,0 +1,74 @@
+// Caroline El Jazmi
+// Gavin Stuart
+// Aidan Johnson
+
+// CS 145
+// Assignment 2: Phone Book
+// 05/10/2021
+
+// PhoneBookManager class createdLinkedList to hold the data value in the phone book.
+// Get method to return the value from entry's in the phonebook.
+// Set method takes index # and assigns it to each new entry.
+// Protected access modifer is used for addEntry.
+// isEmpty uses boolean-type to assess if the size of the phonebook is empty.
+
+import java.util.*;
+
+public class PhoneBookManager {
+    
+  private ListNode firstNode;
+
+
+    public void remove(int index) {
+        if (index == 0) {
+            firstNode = firstNode.getNext();
+        } else {
+            ListNode current = nodeAt(index - 1);
+            current.setNext(current.getNext().getNext());
+        }
+    }
+
+    public ListNode nodeAt(int index) {
+        ListNode current = firstNode;
+
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+
+        return current;
+    }
+
+    public String get(int index) {
+        return nodeAt(index).getName();
+    }
+
+    public int size() {
+        int count = 0;
+        ListNode current = firstNode;
+        while (current != null) {
+            current = current.getNext();
+            count++;
+        }
+
+        return count;
+    }
+    
+    // Display contacts in phonebook with index.
+    // If Phonebook is empty return "Directory is Empty"
+    public void displayDirectory() {
+        if (firstNode == null) {
+            System.out.println("Directory is Empty");
+
+        } else {
+            ListNode current = firstNode;
+            while (current != null) {
+                System.out.println(current.getName());
+                current = current.getNext();
+            }
+
+            
+        }
+    }
+
+
+}
