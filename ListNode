@@ -1,0 +1,61 @@
+// Caroline El Jazmi
+// Gavin Stuart
+// Aidan Johnson
+
+// CS 145
+// Assignment 2: Phone Book
+// 05/10/2021
+
+// ListNode class defines the phonebook node. The class contains common phonebook fields
+// as paramaters, such as name, userEmail, phoneNumber, city and address.
+
+
+public class ListNode {
+    // params for phonebook
+    private String name;
+    private String userEmail;
+    private String phoneNumber;
+    private String userCity;
+    private String userAddress;
+
+    public ListNode(String FN, String UE, String PN, String UC, String UA) {
+        name = FN;
+        userEmail = UE;
+        phoneNumber = PN;
+        userCity = UC;
+        userAddress = UA;
+    }
+
+    //private ListNode phoneList;
+    private ListNode next;
+
+
+
+    public ListNode getNext(){
+        return next;
+    }
+
+    public void setNext(ListNode next){
+        this.next = next;
+
+    }
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return userEmail;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getCity() {
+        return userCity;
+    }
+
+    public String getAddress() {
+        return userAddress;
+    }
+}
