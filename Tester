@@ -1,0 +1,125 @@
+// Caroline El Jazmi
+// Gavin Stuart
+// Aidan Johnson
+
+// CS 145
+// Assignment 2: Phone Book
+// 05/10/2021
+
+// Testing Class uses switch cases to provide a user-interface that allows the user
+// to interact with a phone book program.
+// The use can add new contact, display contact directory, delete contact, edit contact
+// and quit(exit program)
+// We encountered a bug in case 2. We intended to use a for-loop to
+// display the contact at each index in thePhoneBook. We settled with
+// calling upon thePhoneBook.displayDirectory instead.
+
+
+
+import java.util.Scanner;
+
+
+public class Tester {
+    public static void main(String[] args) {
+
+        PhoneBookManager thePhoneBook = new PhoneBookManager();
+
+        //define an int to use for menu slection
+        int menuInput;
+
+        //pull user input with scanner
+        Scanner console = new Scanner(System.in);
+
+        //keep editing while the user is happy
+        boolean quit = false;
+        String name;
+        String email;
+        String phoneNumber;
+        String city;
+        String address;
+        ListNode newContact;
+
+        //while !quit we keep working on the phonebook
+        do {
+
+            System.out.println("Welcome to PhoneBook Manager!");
+            System.out.println("Menu Options: ");
+            System.out.println("1  (Add new contact)");
+            System.out.println("2  (Display contact directory)");
+            System.out.println("3  (Delete contact)");
+            System.out.println("4  (Edit contact)");
+            System.out.println("5  (Quit)");
+
+            System.out.println("How can I help you today?");
+            System.out.print("Enter Valid Command: ");
+            menuInput = console.nextInt();
+            console.nextLine();
+
+            switch (menuInput) {
+                // Add contact
+                case 1:
+                    System.out.println("Add New Contact");
+                    System.out.print("Enter Full Name: ");
+                    name = console.nextLine();
+                    System.out.print("Enter Email: ");
+                    email = console.nextLine();
+                    System.out.print("Enter Phone Number: ");
+                    phoneNumber = console.nextLine();
+                    System.out.print("Enter City: ");
+                    city = console.nextLine();
+                    System.out.print("Enter Address: ");
+                    address = console.nextLine();
+
+                    newContact = new ListNode(name, email, phoneNumber, city, address);
+                    thePhoneBook.addListNode(newContact);
+
+                    System.out.println("New Contact Saved");
+
+                    break;
+
+                // Display contacts
+                case 2:
+                    thePhoneBook.displayDirectory();
+
+                    // Delete contact
+                case 3:
+                   // ListNode.deleteEntry();
+                    break;
+
+                // TODO: Modify contact
+                case 4:
+                    System.out.println("select contact to modify");
+                    thePhoneBook.displayDirectory();
+                    int choice = console.nextInt();
+                    console.nextLine();
+                    System.out.print("Enter Full Name: ");
+                    name = console.nextLine();
+                    System.out.print("Enter Email: ");
+                    email = console.nextLine();
+                    System.out.print("Enter Phone Number: ");
+                    phoneNumber = console.nextLine();
+                    System.out.print("Enter City: ");
+                    city = console.nextLine();
+                    System.out.print("Enter Address: ");
+                    address = console.nextLine();
+
+                    newContact = new ListNode(name, email, phoneNumber, city, address);
+                    thePhoneBook.setEntry(choice, newContact);
+                    break;
+
+                // Quit program
+                case 5:
+                    System.out.println("Goodbye!");
+                    quit = true;
+                    break;
+
+                // Default - invalid input
+                default:
+                    System.out.println("Invalid Input. Try Again!");
+            }
+        }
+        while (!quit) ;
+
+    }
+
+}
